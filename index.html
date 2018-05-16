@@ -67,7 +67,7 @@
                                 if (typeof(webExtensionWallet) === 'undefined"') {
                                     $('#noExtension').show();
                                 }
-                                //var dappaddress = "n1ncG5MBc5xLgGzsng73TPPgW1yWcZzdbmM";
+                                var dappaddress = "n1ncG5MBc5xLgGzsng73TPPgW1yWcZzdbmM";
 
                                 $("#save-score").click(function(){
                                     var score = $('#current_score').val();
@@ -82,6 +82,7 @@
                                         listener:score_push
                                     });
                                     nebPay.call(to,value,callgetFunction,callgetArgs,then (function (resp){
+                                        document.write(resp);
                                         for (var [key,value] of resp){
                                             //content = JSON.parse(value)
                                             //document.write(key+"/t"+content.score+"/t"+content.author+"/t"+content.time);

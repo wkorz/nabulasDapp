@@ -1,0 +1,246 @@
+<!DOCTYPE html> <!-- The new doctype -->
+<html>
+    <head>
+    
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+        <title>Coding A CSS3 &amp; HTML5 One Page Template | Tutorialzine demo</title>
+        
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        
+        <!-- Internet Explorer HTML5 enabling code: -->
+        
+        <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        
+        <style type="text/css">
+        .clear {
+          zoom: 1;
+          display: block;
+        }
+        </style>
+
+        
+        <![endif]-->
+        
+    </head>
+    
+    <body>
+    	
+    	<section id="page"> <!-- Defining the #page section with the section tag -->
+    
+            <header> <!-- Defining the header section of the page with the appropriate tag -->
+            
+                <hgroup>
+                    <h1>Super Man</h1>
+                    <h3>who can make ten seconds</h3>
+                </hgroup>
+            
+            </header>
+            
+            <section id="articles"> <!-- A new section with the articles -->
+
+				<!-- Article 1 start -->
+
+                <div class="line"></div>  <!-- Dividing line -->
+                
+                <article id="article1"> <!-- The new article tag. The id is supplied so it can be scrolled into view. -->
+                    <h2>Make it</h2>
+                    
+                    <div class="line"></div>
+                    
+                    <div class="articleBody clear">
+                    
+                    	<figure> <!-- The figure tag marks data (usually an image) that is part of the article -->
+                            <p>super men</p>
+                            <div class="score_list">
+                                <script ype="text/javascript">
+                                document.write("id\tscore\taddress\ttime<br><br>");
+                                document.write("0\t10:00\tHelloNEBULAS\t3/30/2018,00:00:00 AM<br>");
+                                
+                            </script>
+                            <script type="text/javascript">
+                                //document.write("test1");
+                                var myDate = new Date();
+                                var NebPay = require("nebpay");
+                                var nebPay = new NebPay();
+                                if (typeof(webExtensionWallet) === 'undefined"') {
+                                    $('#noExtension').show();
+                                }
+                                //var dappaddress = "n1ncG5MBc5xLgGzsng73TPPgW1yWcZzdbmM";
+
+                                $("#save-score").click(function(){
+                                    var score = $('#current_score').val();
+                                    var to = dappaddress;
+                                    var value = "0";
+                                    time = myDate.toLocaleString();
+                                    var callsaveFunction = "save";
+                                    var callsaveArgs = "[" + score.trim() + "," + time.trim() + "]";
+                                    var callgetFunction = "get";
+                                    var callgetArgs = "[]"
+                                    nebPay.call(to,value,callsaveFunction,callsaveArgs,{
+                                        listener:score_push
+                                    });
+                                    nebPay.call(to,value,callgetFunction,callgetArgs,then (function (resp){
+                                        for (var [key,value] of resp){
+                                            //content = JSON.parse(value)
+                                            //document.write(key+"/t"+content.score+"/t"+content.author+"/t"+content.time);
+                                            document.write(key.toString()+"\t"+value.score.toString()+"\t"+value.author.toString()+"\t"+value.time.toString()+"<br>");
+                                        }
+                                    }));
+                                })
+
+                                function score_push(repo) {
+                                    console.log("score :" + repo);
+                                }
+                                //var resp = new Map();
+                                //resp.set(2,{"key":2,"score":"09:00","author":"1231231","time":"12"});
+                                //resp.set(3,{"key":3,"score":"08:00","author":"1231231","time":"12"});
+                                //document.write("test");
+                                //for (var [key,value] of resp){
+                                    //content = JSON.parse(value)；
+                                    //document.write("key:"+key.toString());
+                                    //document.write("score:"+value.score.toString());
+                                    //document.write("author:"+value.author.toString());
+                                    //document.write("value:"+content.toString());
+                                    
+                                }
+                            </script>
+                            </div>
+                        </figure>
+                        
+                        <p>If you make exactly ten seconds (10:00) ,you will be one of super man! You can click "save" to save your score to the blockchain! </p>
+
+                        
+
+                        <div class="timer-display" id="current_score">
+                            00:00
+                        </div>
+                        <form class="setting-options">
+
+                        <button type="button" class="toggle-timer" name="toggle-timer">Start</button>
+                        <button type="button" class="reset-timer" name="reset-timer">Reset</button>
+                        <button type="button" class="save-score" name="save-score">save</button>
+
+                        </form>
+                    </div>
+                </article>
+                
+				<!-- Article 1 end -->
+
+            </section>
+
+        <script type="text/javascript">
+                            const timerDisplay = document.querySelector(".timer-display");
+                            const toggleButton = document.querySelector(".toggle-timer");
+                            const resetButton = document.querySelector(".reset-timer");
+                            //const savebutton = document.querySelector(".save-score");
+
+                            const maxTime = 1500;
+
+                            let runningTimer;
+                            let timerStatus = false;
+
+                            function displayTime(decSeconds) {
+                              //const minutes = Math.floor(decSeconds / 600);
+                              //const restDecSecs = decSeconds % 600;
+                              const seconds = Math.floor(decSeconds / 100);
+                              const deciSeconds = decSeconds % 100;
+
+                              //const displayMins = `${minutes < 10 ? "0" : ""}${minutes}`;
+                              const displaySecs = `${seconds < 10 ? "0" : ""}${seconds}`;
+                              const displayDecSecs = `${deciSeconds <10 ? "0" : ""}${deciSeconds}`;
+
+                              //const display = `${displayMins}:${displaySecs}.${displayDecSecs}`;
+                              const display = `${displaySecs}:${displayDecSecs}`;
+
+                              timerDisplay.textContent = display;
+/*
+                              displayBinary("mt", Math.floor(minutes / 10));
+                              displayBinary("mo", minutes % 10);
+                              displayBinary("st", Math.floor(seconds / 10));
+                              displayBinary("so", seconds % 10);
+                              displayBinary("d", deciSeconds);
+                              */
+                            }
+
+                            function runTimer() {
+                              clearInterval(runningTimer);
+                              let timer = 0;
+
+                              // start interval
+                              runningTimer = setInterval(() => {
+                                const runTimer = timer++;
+
+                                // if time is up (reached max of 59min59sec) stop timer
+                                if (runTimer > maxTime) {
+                                  clearInterval(runningTimer);
+                                  return;
+                                }
+
+                                // display timer
+                                displayTime(timer);
+                              }, 10);
+                            }
+/*
+                            function displayBinary(type, digit) {
+                              for (let i = 8; i >= 1; i = i / 2) {
+                                let binary = Math.floor(digit / i);
+
+                                binary
+                                  ? document.getElementById(`${type}${i}`).classList.add("active")
+                                  : document.getElementById(`${type}${i}`).classList.remove("active");
+
+                                digit = digit % i;
+                              }
+                            }
+                            */
+
+                            function toggleTimer() {
+                              // stops timer
+                              if (timerStatus) {
+                                toggleButton.textContent = "Start";
+                                toggleButton.setAttribute("disabled", true);
+
+                                // stop running timer
+                                clearInterval(runningTimer);
+
+                                // starts timer
+                              } else if (!timerStatus) {
+                                runTimer();
+                                toggleButton.textContent = "Stop";
+                              }
+
+                              timerStatus = !timerStatus;
+                            }
+
+                            function resetTimer() {
+                              toggleButton.textContent = "Start";
+                              toggleButton.removeAttribute("disabled");
+                              timerStatus = false;
+                              displayTime(0);
+                              clearInterval(runningTimer);
+                            }
+                            toggleButton.addEventListener("click", toggleTimer);
+                            resetButton.addEventListener("click", resetTimer);
+                            //savebutton.addEventListener("click",saveScore)
+                        </script>
+
+            
+		</section> <!-- Closing the #page section -->
+        
+        <!-- JavaScript Includes -->
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script src="jquery.scrollTo-1.4.2/jquery.scrollTo-min.js"></script>
+        <script src="script.js"></script>
+        <footer>
+        <div>
+                <p><br/>please install WebExtensionWallet<a href="https://github.com/ChengOrangeJu/WebExtensionWallet">Chrome Nebulas-WebExtensionWallet</a> </p>
+                <a href="https://nebulas.io/"><img src="data:image/svg+xml;base64,PHN2ZyBpZD0i5Zu+5bGCXzEiIGRhdGEtbmFtZT0i5Zu+5bGCIDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDIxNCAzMCI+CiAgPGRlZnM+CiAgICA8c3R5bGU+LmNscy0xe2ZpbGwtcnVsZTpldmVub2RkO308L3N0eWxlPgogIDwvZGVmcz4KICA8dGl0bGU+bmViPC90aXRsZT4KICA8cGF0aCBjbGFzcz0iY2xzLTEiCiAgICAgICAgZD0iTTEwOC45MiwyLjVsLTIuNDEsNy4zMmgwbC05LjIsNC42OCw3LjEsMi40OCw0LjU1LDkuNSwyLjQxLTcuMzJoMGw5LjItNC42OEwxMTMuNDYsMTJabS00LjU0LDEzLjYzLTUtMS43Ni4xMS0uMDYsNi42OS0zLjQtMS43Miw1LjIzWm00LjY4LTExLjUxLDMuNiw3LjUzLTcuMywzLjcxWm0tLjI1LDE5Ljc1LTMuMzUtNyw1LjA3LDEuNzZabTkuNTktOS42OUwxMTEsMTguNDVsLTUuMy0xLjg1LjExLS4wNiw3LjM5LTMuNzYsNS4zLDEuODVaIi8+CiAgPHBhdGggY2xhc3M9ImNscy0xIgogICAgICAgIGQ9Ik0xNTUuNDEsMTQuNTZhMiwyLDAsMCwwLC40My0xLjIzVjEyLjE0YTIuMSwyLjEsMCwwLDAtMS40NS0ybDAsMGE0LjkxLDQuOTEsMCwwLDAtMS41NS0uMjVoLTQuOTF2OS43M2g1LjY0YTQuODIsNC44MiwwLDAsMCwxLjU0LS4yNWwuMDYsMGEyLjEsMi4xLDAsMCwwLDEuNDUtMnYtLjg3QTIuMzQsMi4zNCwwLDAsMCwxNTUuNDEsMTQuNTZabS02LjY4LTMuODRoNC4wN2E0LjA3LDQuMDcsMCwwLDEsMS4yOS4yMWwwLDBhMS4yNywxLjI3LDAsMCwxLC44NywxLjJ2MS4xOWExLjEyLDEuMTIsMCwwLDEtLjYxLDFoLTUuNjZabTUuNzIsNC4zOGExLjUxLDEuNTEsMCwwLDEsMS4yOSwxLjQxdi44NGExLjI2LDEuMjYsMCwwLDEtLjg3LDEuMmwtLjA1LDBhNCw0LDAsMCwxLTEuMjkuMjFoLTQuOFYxNS4wOVoiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiCiAgICAgICAgICAgcG9pbnRzPSIxMzYuMDcgMTkuNiAxMzYuMDcgMTAuMDUgMTQzLjg4IDEwLjA1IDE0My44OCAxMC44NSAxMzYuODUgMTAuODUgMTM2Ljg1IDE0LjQzIDE0My4xMSAxNC40MyAxNDMuMTEgMTUuMjIgMTM2Ljg1IDE1LjIyIDEzNi44NSAxOC44IDE0NC42NCAxOC44IDE0NC42NCAxOS42IDEzNi4wNyAxOS42Ii8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIgogICAgICAgICAgIHBvaW50cz0iMTI0LjkxIDExLjQ5IDEyNC45MSAxOS40MiAxMjQuMTMgMTkuNDIgMTI0LjEzIDkuNDggMTMxLjk3IDE3Ljk5IDEzMS45NyAxMC4wNyAxMzIuNzYgMTAuMDcgMTMyLjc2IDIwIDEyNC45MSAxMS40OSIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIKICAgICAgICBkPSJNMTYzLjY3LDE5LjYyYTQsNCwwLDAsMS0zLjk1LTMuODNWOS44N2guODN2NS45MWEzLjEyLDMuMTIsMCwwLDAsMy4xMiwzaC41OWEzLjEyLDMuMTIsMCwwLDAsMy4xMi0zVjkuODdoLjgzdjUuOTFhNCw0LDAsMCwxLTMuOTQsMy44NFoiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiCiAgICAgICAgICAgcG9pbnRzPSIxNzEuODIgMTkuNDIgMTcxLjgyIDEwLjA3IDE3Mi42MSAxMC4wNyAxNzIuNjEgMTguNjQgMTc5LjY5IDE4LjY0IDE3OS42OSAxOS40MiAxNzEuODIgMTkuNDIiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiCiAgICAgICAgZD0iTTE5MC4yOCwxOS41M2wtMS4xOC0yLjM1aC01LjU3bC0xLjE4LDIuMzVoLS45bDQuODctOS42Nyw0Ljg2LDkuNjdabS0xLjU4LTMuMTUtMi4zOC00Ljc0LTIuMzgsNC43NFoiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiCiAgICAgICAgZD0iTTE5My42NCwxOS40MXYtLjgyaDUuNDZhMy44OSwzLjg5LDAsMCwwLDEuMjItLjIsMS40MywxLjQzLDAsMCwwLC44NC0xLjI2VjE2LjZhMS40MiwxLjQyLDAsMCwwLS44Mi0xLjI0LDQsNCwwLDAsMC0xLjI1LS4yaC0zYTQuNzMsNC43MywwLDAsMS0xLjUyLS4yNUEyLDIsMCwwLDEsMTkzLjI0LDEzVjEyLjJhMiwyLDAsMCwxLDEuMzgtMS44OCw0LjY4LDQuNjgsMCwwLDEsMS41MS0uMjVoNC44MnYuODJoLTQuODJhMy45LDMuOSwwLDAsMC0xLjI1LjIxLDEuMTUsMS4xNSwwLDAsMC0uODEsMS4xVjEzYTEuMTUsMS4xNSwwLDAsMCwuODEsMS4xLDQsNCwwLDAsMCwxLjI2LjIxaDNhNC43Miw0LjcyLDAsMCwxLDEuNDguMjRsLjA5LDBhMi4yNCwyLjI0LDAsMCwxLDEuMzIsMnYuNTVhMi4yNSwyLjI1LDAsMCwxLTEuMzEsMmwtLjA4LDBhNC43NCw0Ljc0LDAsMCwxLTEuNDkuMjRaIi8+CiAgPHBhdGgKICAgIGQ9Ik0xNC44MSwxMy4yMmEyLjYxLDIuNjEsMCwwLDAsLjU1LTEuNzEsMi43OCwyLjc4LDAsMCwwLS4yNS0xLjE4LDIuNDEsMi40MSwwLDAsMC0uNjktLjg4LDIuNjcsMi42NywwLDAsMC0xLS41LDExLjYyLDExLjYyLDAsMCwwLTIuMzMtLjE0SDkuMTh2MTAuM0gxMFYxNC4yNGguOGExMy43MiwxMy43MiwwLDAsMCwyLjYxLS4xOEEyLjM5LDIuMzksMCwwLDAsMTQuODEsMTMuMjJabS0uODgtLjM2YTIuNjMsMi42MywwLDAsMS0yLC41NUgxMFY5LjY2aDEuODhjMS43LDAsMi41Ni42MiwyLjU2LDEuODVBMS45MiwxLjkyLDAsMCwxLDEzLjkzLDEyLjg2WiIvPgogIDxwYXRoCiAgICBkPSJNMjMuNTgsMTIuNTJhMy43LDMuNywwLDAsMC01LjQyLDBBNCw0LDAsMCwwLDE3LDE1LjM3YTQsNCwwLDAsMCwxLjExLDIuODIsMy43NCwzLjc0LDAsMCwwLDUuNDUsMCw0LjE5LDQuMTksMCwwLDAsMC01LjY4Wk0yMywxNy42NWEyLjg1LDIuODUsMCwwLDEtMi4xNS45NCwyLjc5LDIuNzksMCwwLDEtMi4xMy0uOTMsMy4yMywzLjIzLDAsMCwxLS44Ni0yLjI2LDMuMywzLjMsMCwwLDEsLjg5LTIuMywyLjgxLDIuODEsMCwwLDEsNC4yNCwwLDMuMjYsMy4yNiwwLDAsMSwuODksMi4yOEEzLjIxLDMuMjEsMCwwLDEsMjMsMTcuNjVaIi8+CiAgPHBvbHlnb24KICAgIHBvaW50cz0iMzYuMjMgMTEuNTQgMzMuODQgMTcuNTUgMzEuMzggMTEuNTQgMzEuMzIgMTEuNTQgMjguODUgMTcuNTUgMjYuNSAxMS41NCAyNS42OCAxMS41NCAyOC44MiAxOS4zNyAyOC44OSAxOS4zNyAzMS4zNSAxMy40MyAzMy44IDE5LjM3IDMzLjg3IDE5LjM3IDM3LjA3IDExLjU0IDM2LjIzIDExLjU0Ii8+CiAgPHBhdGgKICAgIGQ9Ik00NC42OCwxNi44YTMuMTIsMy4xMiwwLDAsMS0yLjg5LDEuODIsMi43MiwyLjcyLDAsMCwxLTItLjg4LDMuMzgsMy4zOCwwLDAsMS0uODgtMi4zMXYtLjA5aDYuNzZhNC4yLDQuMiwwLDAsMC0xLjEzLTIuOTEsMy42NCwzLjY0LDAsMCwwLTIuNjktMS4xLDMuNTEsMy41MSwwLDAsMC0yLjY4LDEuMTgsNC4yNiw0LjI2LDAsMCwwLDAsNS42OCwzLjU3LDMuNTcsMCwwLDAsMi43NCwxLjE4LDMuNzgsMy43OCwwLDAsMCwzLjQ4LTIuMjFaTTM5LDE0LjU1YTIuODMsMi44MywwLDAsMSwyLjg1LTIuNDIsMywzLDAsMCwxLDEuODcuNjQsMi44MywyLjgzLDAsMCwxLDEsMS43OWwwLC4xaC01LjhaIi8+CiAgPHBhdGgKICAgIGQ9Ik01OC4xMywxNi44YTMuMTIsMy4xMiwwLDAsMS0yLjg5LDEuODIsMi43MiwyLjcyLDAsMCwxLTItLjg4LDMuMzgsMy4zOCwwLDAsMS0uODgtMi4zMXYtLjA5aDYuNzZBNC4yLDQuMiwwLDAsMCw1OCwxMi40M2EzLjY0LDMuNjQsMCwwLDAtMi42OS0xLjEsMy41MSwzLjUxLDAsMCwwLTIuNjgsMS4xOCw0LjI2LDQuMjYsMCwwLDAsMCw1LjY4LDMuNTcsMy41NywwLDAsMCwyLjc0LDEuMTgsMy43OCwzLjc4LDAsMCwwLDMuNDgtMi4yMVptLTUuNy0yLjI1YTIuODMsMi44MywwLDAsMSwyLjg1LTIuNDIsMywzLDAsMCwxLDEuODcuNjQsMi44MywyLjgzLDAsMCwxLDEsMS43OWwwLC4xSDUyLjRaIi8+CiAgPHBhdGgKICAgIGQ9Ik02MS44MywxOC4xOGEzLjYxLDMuNjEsMCwwLDAsMi43MywxLjE4LDMuNjgsMy42OCwwLDAsMCwyLjg4LTEuNTZsLjE1LS4xOHYxLjQ4aC43OFY4LjU1aC0uNzh2NC41OGwtLjE1LS4yMWEzLjQ0LDMuNDQsMCwwLDAtMi45Mi0xLjU4LDMuNTksMy41OSwwLDAsMC0yLjY4LDEuMTgsNCw0LDAsMCwwLTEuMTIsMi44M0E0LDQsMCwwLDAsNjEuODMsMTguMThabS41OC01LjFhMywzLDAsMCwxLDQuMzcsMCwzLjI5LDMuMjksMCwwLDEsLjg3LDIuMywzLjE2LDMuMTYsMCwwLDEtLjkzLDIuMzMsMywzLDAsMCwxLTIuMTYuOTIsMi44MiwyLjgyLDAsMCwxLTIuMTMtMSwzLjM3LDMuMzcsMCwwLDEsMC00LjU2WiIvPgogIDxwYXRoCiAgICBkPSJNODAuODksMTIuNTFhMy41NCwzLjU0LDAsMCwwLTIuNjgtMS4xOCwzLjY3LDMuNjcsMCwwLDAtMi45NSwxLjVsLS4xNS4xOFY4LjU1aC0uNzhWMTkuMTFoLjc4VjE3LjVsLjE1LjIxYTMuNSwzLjUsMCwwLDAsMi45MiwxLjY2LDMuNTgsMy41OCwwLDAsMCwyLjY4LTEuMTgsNC4xOCw0LjE4LDAsMCwwLDAtNS42OFptLS42LDUuMWEyLjkyLDIuOTIsMCwwLDEtNC4zNCwwLDMuMzUsMy4zNSwwLDAsMS0uODktMi4zNUEzLjE5LDMuMTksMCwwLDEsNzUuOTQsMTNhMi45MiwyLjkyLDAsMCwxLDIuMTktLjkxLDIuODIsMi44MiwwLDAsMSwyLjE4LDEsMy4zMywzLjMzLDAsMCwxLC44NywyLjI4QTMuMjgsMy4yOCwwLDAsMSw4MC4yOSwxNy42WiIvPgogIDxwb2x5Z29uCiAgICBwb2ludHM9Ijg5LjE5IDExLjU0IDg2LjYzIDE3LjYzIDgzLjk5IDExLjU0IDgzLjE1IDExLjU0IDg2LjIgMTguNjEgODQuNzkgMjEuOTMgODUuNjMgMjEuOTMgOTAuMDQgMTEuNTQgODkuMTkgMTEuNTQiLz4KICA8cmVjdCB4PSI0Ny4zOCIgeT0iMTEuNDkiIHdpZHRoPSIwLjgzIiBoZWlnaHQ9IjcuNzIiLz4KICA8cGF0aAogICAgZD0iTTQ3LjM5LDE0LjA2aC44NGExLjg5LDEuODksMCwwLDEsMS44NS0xLjcyLDEuOCwxLjgsMCwwLDEsLjYyLjEydi0uOWEyLjYzLDIuNjMsMCwwLDAtLjYyLS4wOEEyLjc0LDIuNzQsMCwwLDAsNDcuMzksMTQuMDZaIi8+Cjwvc3ZnPgo=" height="200" width="300"></a>
+
+            </div>
+        </footer>
+
+    </body>
+</html>

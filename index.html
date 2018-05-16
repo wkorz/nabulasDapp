@@ -77,6 +77,7 @@
 
                                 $('#save-score').on('click',function(){
 				    alert("save");
+					/*
                                     document.write("starting saving");
                                     var score = $('#current_score').val();
                                     var to = dappaddress;
@@ -94,6 +95,7 @@
                                     document.write("starting geting");
                                     nebPay.call(to,value,callgetFunction,callgetArgs,then (function (resp){
                                       document.write("get success");
+				      */
                                       /*
                                         document.write(resp);
                                         for (var [key,value] of resp){
@@ -102,7 +104,7 @@
                                             document.write(key.toString()+"\t"+value.score.toString()+"\t"+value.author.toString()+"\t"+value.time.toString()+"<br>");
                                         }
                                         */
-                                    }));
+                                   // }));
                                 })
 
                                 function score_push(repo) {

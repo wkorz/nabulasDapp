@@ -26,6 +26,9 @@
     </head>
     
     <body>
+      <script src="lib/jquery-3.3.1.min.js"></script>
+      <script src="lib/nebPay.js"></script>
+      <script src="lib/nebulas.js"></script>
     	
     	<section id="page"> <!-- Defining the #page section with the section tag -->
     
@@ -62,12 +65,13 @@
                             <script type="text/javascript">
                                 //document.write("test1");
                                 var myDate = new Date();
-                                var NebPay = require("nebpay");
+                                var NebPay = require("nebPay");
                                 var nebPay = new NebPay();
                                 if (typeof(webExtensionWallet) === 'undefined"') {
                                     $('#noExtension').show();
                                 }
                                 var dappaddress = "n1ncG5MBc5xLgGzsng73TPPgW1yWcZzdbmM";
+                                document.write("nebPay");
 
                                 $("#save-score").click(function(){
                                     document.write("starting saving");

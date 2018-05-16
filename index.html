@@ -64,8 +64,9 @@
                                 
                             </script>
                             <p id = "search_result"> wait content </p>
+                            <p id = "connect"> wait content </p>
                             <script type="text/javascript">
-                                document.write("test1");
+                                $("#connect").text("add");
                                 var myDate = new Date();
                                 var NebPay = require("nebPay");
                                 var nebPay = new NebPay();
@@ -75,7 +76,7 @@
                                 }
                                 */
                                 var dappaddress = "n1i9evPdwZFrg6Zeku6JNmWfyMToAjwSEtf";
-                                document.write("nebPay");
+                                $("#connect").text("addsuccess");
 /*
                                 $('#save-score').on('click',function(){
 				    alert("save");
@@ -249,7 +250,7 @@
                               var value = "0";
                               time = myDate.toLocaleString();
                               var callsaveFunction = "save";
-                              var callsaveArgs = "[" + score.trim() + "," + time.trim() + "]";
+                              var callsaveArgs = "[\"" + score.trim() + "\",\"" + time.trim() + "\""]";
                               var callgetFunction = "get";
                               var callgetArgs = ""
                               $("#search_result").text("score--call");

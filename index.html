@@ -82,7 +82,7 @@
                                     var callsaveFunction = "save";
                                     var callsaveArgs = "[" + score.trim() + "," + time.trim() + "]";
                                     var callgetFunction = "get";
-                                    var callgetArgs = "[]"
+                                    var callgetArgs = ""
                                     document.write("svae function");
                                     nebPay.call(to,value,callsaveFunction,callsaveArgs,{
                                         listener:score_push
@@ -91,12 +91,14 @@
                                     document.write("starting geting");
                                     nebPay.call(to,value,callgetFunction,callgetArgs,then (function (resp){
                                       document.write("get success");
+                                      /*
                                         document.write(resp);
                                         for (var [key,value] of resp){
                                             //content = JSON.parse(value)
                                             //document.write(key+"/t"+content.score+"/t"+content.author+"/t"+content.time);
                                             document.write(key.toString()+"\t"+value.score.toString()+"\t"+value.author.toString()+"\t"+value.time.toString()+"<br>");
                                         }
+                                        */
                                     }));
                                 })
 

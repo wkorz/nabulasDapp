@@ -251,9 +251,9 @@
                               var score = timerDisplay.textContent;
                               var to = dappaddress;
                               var value = "0";
-                              time = myDate.toLocaleString();
+                              var time = myDate.toLocaleString();
                               var callsaveFunction = "save";
-                              var callsaveArgs = "[" + "\"" + score + "\"" + ",” +"\""+ time + "\"" + "]";
+                              var callsaveArgs = "[" + "\"" + score.toString() + "\"" + ",” + "\""+ time.toString() + "\"" + "]";
                               var callgetFunction = "get";
                               var callgetArgs = ""
                               $("#search_result").text("score--call");

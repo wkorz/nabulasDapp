@@ -68,15 +68,18 @@
                             <script type="text/javascript">
                                 $("#connect").text("add");
                                 var myDate = new Date();
-                                var NebPay = require("nebPay");
+				    $("#connect").text("add--date");
+                                var NebPay = require("nebpay");
+				    $("#connect").text("add--require");
                                 var nebPay = new NebPay();
+				    $("#connect").text("add--nebpay");
                                 /*
                                 if (typeof(webExtensionWallet) === 'undefined"') {
                                     alert("please install WebExtensionWallet")
                                 }
                                 */
                                 var dappaddress = "n1i9evPdwZFrg6Zeku6JNmWfyMToAjwSEtf";
-                                $("#connect").text("addsuccess");
+                                $("#connect").text("add--success");
 /*
                                 $('#save-score').on('click',function(){
 				    alert("save");

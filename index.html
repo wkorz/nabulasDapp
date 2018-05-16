@@ -60,8 +60,10 @@
                                 <script ype="text/javascript">
                                 document.write("id\tscore\taddress\ttime<br><br>");
                                 document.write("0\t10:00\tHelloNEBULAS\t3/30/2018,00:00:00 AM<br>");
+
                                 
                             </script>
+                            <p id = "search_result"> wait content </p>
                             <script type="text/javascript">
                                 document.write("test1");
                                 var myDate = new Date();
@@ -241,7 +243,8 @@
                             }
 
                             function saveScore (){
-                              document.write("save");
+
+                              $("#search_result").text("success");
                               //alert("success");
                             }
                             toggleButton.addEventListener("click", toggleTimer);

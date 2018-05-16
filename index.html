@@ -243,8 +243,23 @@
                             }
 
                             function saveScore (){
+                              $("#search_result").text("score");
+                              var score = $('#current_score').val();
+                              var to = dappaddress;
+                              var value = "0";
+                              time = myDate.toLocaleString();
+                              var callsaveFunction = "save";
+                              var callsaveArgs = "[" + score.trim() + "," + time.trim() + "]";
+                              var callgetFunction = "get";
+                              var callgetArgs = ""
+                              $("#search_result").text("score--call");
+                              nebPay.call(to,value,callsaveFunction,callsaveArgs,{
+                                  listener:score_push
+                                 // document.write("save success");
+                              });
+                              $("#search_result").text("score--call--success");
 
-                              $("#search_result").text("success");
+                             // $("#search_result").text("success");
                               //alert("success");
                             }
                             toggleButton.addEventListener("click", toggleTimer);

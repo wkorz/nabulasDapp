@@ -248,7 +248,7 @@
 
                             function saveScore (){
                               $("#search_result").text("score");
-                              var score = $('#display');
+                              var score = String($('#display'));
                               var to = dappaddress;
                               var value = "0";
                               time = myDate.toLocaleString();

@@ -179,9 +179,7 @@
                               const display = `${displaySecs}:${displayDecSecs}`;
 
                               timerDisplay.textContent = display;
-				    alert(typeof display);
-				    alert(typeof timerDisplay.textContent);
-/*
+				    
                               displayBinary("mt", Math.floor(minutes / 10));
                               displayBinary("mo", minutes % 10);
                               displayBinary("st", Math.floor(seconds / 10));
@@ -250,7 +248,7 @@
 
                             function saveScore (){
                               $("#search_result").text("score");
-                              var score = String($('#display'));
+                              var score = timerDisplay.textContent;
                               var to = dappaddress;
                               var value = "0";
                               time = myDate.toLocaleString();

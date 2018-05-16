@@ -70,6 +70,7 @@
                                 var dappaddress = "n1ncG5MBc5xLgGzsng73TPPgW1yWcZzdbmM";
 
                                 $("#save-score").click(function(){
+                                    document.write("starting saving");
                                     var score = $('#current_score').val();
                                     var to = dappaddress;
                                     var value = "0";
@@ -78,10 +79,14 @@
                                     var callsaveArgs = "[" + score.trim() + "," + time.trim() + "]";
                                     var callgetFunction = "get";
                                     var callgetArgs = "[]"
+                                    document.write("svae function");
                                     nebPay.call(to,value,callsaveFunction,callsaveArgs,{
                                         listener:score_push
+                                        document.write("save success");
                                     });
+                                    document.write("starting geting");
                                     nebPay.call(to,value,callgetFunction,callgetArgs,then (function (resp){
+                                      document.write("get success");
                                         document.write(resp);
                                         for (var [key,value] of resp){
                                             //content = JSON.parse(value)

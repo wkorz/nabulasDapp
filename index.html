@@ -254,7 +254,9 @@
                               var callgetArgs = ""
                               $("#search_result").text("score--call");
                               nebPay.call(to,value,callsaveFunction,callsaveArgs,{
+                                listener:function(){
                                 $("#search_result").text("score--call--success");
+                              }
                                   //listener:score_push
                                  // document.write("save success");
                               });

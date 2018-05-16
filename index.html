@@ -152,7 +152,7 @@
                             const timerDisplay = document.querySelector(".timer-display");
                             const toggleButton = document.querySelector(".toggle-timer");
                             const resetButton = document.querySelector(".reset-timer");
-                            //const savebutton = document.querySelector(".save-score");
+                            const savebutton = document.querySelector(".save-score");
 
                             const maxTime = 1500;
 
@@ -239,9 +239,14 @@
                               displayTime(0);
                               clearInterval(runningTimer);
                             }
+
+                            function saveScore(){
+                              document("save");
+                              alert("success");
+                            }
                             toggleButton.addEventListener("click", toggleTimer);
                             resetButton.addEventListener("click", resetTimer);
-                            //savebutton.addEventListener("click",saveScore)
+                            savebutton.addEventListener("click",saveScore)
                         </script>
 
             

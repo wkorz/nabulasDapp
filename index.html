@@ -304,8 +304,8 @@
                                   items = resp.result.toString().split("_");
                                   for(var i=0;i<items.length;i++){
                                     //part = items[i].split(",");
-				    parts = items[i].substring(9,items[i].length-3).split(",");
-                                    res+= part[0].split(":")[1].toString() + "\t" + part[1].split(":")[1].substring(4,part[1].split(":")[1].length-4) + "\t" + part[2].split(":")[1].substring(4,part[2].split(":")[1].length-4) + " \t" + part[3].split(":")[1].substring(4,part[3].split(":")[1].length-4) + "<br/>"
+				    part = items[i].substring(9,items[i].length-3).split(",");
+                                    res+= part[0].split(":")[1].toString() + "\t" + part[1].split(":")[1].substring(4,part[1].split(":")[1].length-4) + "\t" + part[2].split(":")[1].substring(4,part[2].split(":")[1].length-4) + " \t" + part[3].split(":")[1].substring(4,part[3].split(":")[1].length-4) + "\n"
                                   }
                                   $("#test").text(res);
                                 }

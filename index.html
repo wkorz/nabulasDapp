@@ -296,7 +296,7 @@
 
                               await nebPay.call(to,value,"getsize",callgetArgs,{
                                 listener:await function(resp){
-                                  await $("#size").text("size:"+resp.toString());
+                                  $("#size").text("size:"+resp.toString());
                                 }
                               });
 				    

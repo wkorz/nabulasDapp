@@ -64,11 +64,11 @@
 
                                 
                             </script>
-                            <p id = "search_result"> wait content </p>
-                            <p id = "connect"> wait content </p>
-                            <p id = "result"> wait content </p>
-                            <p id = "size"> wait content </p>
-                            <p id = "test"> wait content </p>
+                            //<p id = "search_result"> wait content </p>
+                            //<p id = "connect"> wait content </p>
+                            //<p id = "result"> wait content </p>
+                            //<p id = "size"> wait content </p>
+                            //<p id = "test"> </p>
                             <script type="text/javascript">
                                 $("#connect").text("add");
                                 var myDate = new Date();
@@ -302,7 +302,7 @@
                                 listener:function(resp){
                                   res="";
                                   items = resp.result.toString().split("_");
-                                  for(var i=0;i<items.length;i++){
+                                  for(var i=1;i<items.length;i++){
                                     //part = items[i].split(",");
 				    part = items[i].substring(9,items[i].length-3).split(",");
                                     //res+= part[0].split(":")[1] + "\t" + part[1].split(":")[1].substring(4,part[1].split(":")[1].length-4) + "\t" + part[2].split(":")[1].substring(4,part[2].split(":")[1].length-4) + " \t" + part[3].split(":")[1].substring(4,part[3].split(":")[1].length-4) + "\n"

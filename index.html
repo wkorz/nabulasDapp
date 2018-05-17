@@ -65,6 +65,7 @@
                             </script>
                             <p id = "search_result"> wait content </p>
                             <p id = "connect"> wait content </p>
+                            <p id = "result"> wait content </p>
                             <script type="text/javascript">
                                 $("#connect").text("add");
                                 var myDate = new Date();
@@ -246,7 +247,7 @@
                               clearInterval(runningTimer);
                             }
 
-                            function saveScore (){
+                            function saveScore () {
                               $("#search_result").text("score");
                               var score = timerDisplay.textContent;
                               var to = dappaddress;
@@ -259,16 +260,28 @@
                               $("#search_result").text("score--call");
                               nebPay.call(to,value,callsaveFunction,callsaveArgs,{
                                 listener:function(){
-                                $("#search_result").text("score--call--success");
-                              }
+                                  $("#search_result").text("score--call--success");
+                                };
+                              })
+
+                              nebPay.call(to,value,callgetFunction,callgetArgs,{
+                                listener: function(resp){
+                                  $("#search_result").text("score--call--success--get");
+
+                                  $("#search_result").text("score--call--success--get--update");
+
+                                  $("#result").text(resp);
+                                }
+                              });
                                   //listener:score_push
                                  // document.write("save success");
-                              });
+                              //});
                               //$("#search_result").text("score--call--success");
 
                              // $("#search_result").text("success");
                               //alert("success");
                             }
+
                             toggleButton.addEventListener("click", toggleTimer);
                             resetButton.addEventListener("click", resetTimer);
                             savebutton.addEventListener("click",saveScore)

@@ -282,7 +282,7 @@
                               var value = "0";
                               var callgetFunction = "get";
                               var callgetArgs = "";
-				    
+				  /*  
                               nebPay.simulateCall(to,value,callgetFunction,callgetArgs,{
                                 listener: function(resp){
 
@@ -290,20 +290,20 @@
                                 }
                               });
 			      
-/*
+
                               nebPay.simulateCall(to,value,"getsize",callgetArgs,{
                                 listener: function(resp){
                                   $("#size").text("size:"+resp.toString());
                                 }
                               });
 				    
-
-                              nebPay.simulateCall(to,value,"testget",callgetArgs,{
+*/
+                              nebPay.simulateCall(to,value,"gettest",callgetArgs,{
                                 listener:function(resp){
                                   $("#test").text("test:"+resp.result.toString());
                                 }
                               });
-*/
+
                             }
 
                             toggleButton.addEventListener("click", toggleTimer);

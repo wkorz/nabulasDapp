@@ -292,7 +292,7 @@
                                   $("#result").text("res:"+resp.toString());
                                 }
                               });
-			      */
+			      
 
                               nebPay.simulateCall(to,value,"getsize",callgetArgs,{
                                 listener: function(resp){
@@ -300,13 +300,13 @@
                                 }
                               });
 				    
-/*
+*/
                               nebPay.call(to,value,"gettest",callgetArgs,{
                                 listener:function(resp){
                                   $("#test").text("test:"+resp.toString());
                                 }
                               });
-*/
+
                             }
 
                             toggleButton.addEventListener("click", toggleTimer);

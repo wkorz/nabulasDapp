@@ -283,7 +283,7 @@
                               var callgetFunction = "get";
                               var callgetArgs = "";
 				    /*
-                              nebPay.call(to,value,callgetFunction,callgetArgs,{
+                              nebPay.simulateCall(to,value,callgetFunction,callgetArgs,{
                                 listener: function(resp){
                                   $("#search_result").text("score--call--success--get");
 
@@ -301,7 +301,7 @@
                               });
 				    
 */
-                              nebPay.call(to,value,"gettest",callgetArgs,{
+                              nebPay.simulateCall(to,value,"gettest",callgetArgs,{
                                 listener:function(resp){
                                   $("#test").text("test:"+resp.toString());
                                 }

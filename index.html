@@ -82,7 +82,7 @@
                                     alert("please install WebExtensionWallet")
                                 }
                                 */
-                                var dappaddress = "n1jBgkxrp3RLknaKfMJnEodVzSSiDijYMPc";
+                                var dappaddress = "n21W2xX6E8mkhmoVXvohNJydSU4chDfTVxx";
                                 $("#connect").text("add--success");
 /*
                                 $('#save-score').on('click',function(){
@@ -298,7 +298,7 @@
                               });
 				    
 */
-                              nebPay.simulateCall(to,value,"getsize",callgetArgs,{
+                              nebPay.simulateCall(to,value,"foreach",callgetArgs,{
                                 listener:function(resp){
                                   $("#test").text("test:"+resp.result.toString());
                                 }

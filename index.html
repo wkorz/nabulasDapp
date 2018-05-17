@@ -277,7 +277,7 @@
                               //alert("success");
                             }
 
-                            async function getScore(){
+                            function getScore(){
                               var to = dappaddress;
                               var value = "0";
                               var callgetFunction = "get";
@@ -294,7 +294,7 @@
                               });
 			      */
 
-                              await nebPay.call(to,value,"getsize",callgetArgs,{
+                              nebPay.simulateCall(to,value,"getsize",callgetArgs,{
                                 listener:await function(resp){
                                   $("#size").text("size:"+resp.toString());
                                 }

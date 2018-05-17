@@ -56,6 +56,7 @@
                     
                     	<figure> <!-- The figure tag marks data (usually an image) that is part of the article -->
                             <p>super men</p>
+                            <button type="button" class="get-score" name="get-score">inquire</button>
                             <div class="score_list">
                                 <script ype="text/javascript">
                                 document.write("id\tscore\taddress\ttime<br><br>");
@@ -160,6 +161,7 @@
                             const toggleButton = document.querySelector(".toggle-timer");
                             const resetButton = document.querySelector(".reset-timer");
                             const savebutton = document.querySelector(".save-score");
+                            const getbutton = document.querySelector(".get-score");
 
                             const maxTime = 1500;
 
@@ -255,8 +257,7 @@
                               var time = myDate.toLocaleString();
                               var callsaveFunction = "save";
                               var callsaveArgs = "[" + "\"" + score.toString() + "\"" + "," + "\"" + time.toString() + "\"" + "]";
-                              var callgetFunction = "get";
-                              var callgetArgs = ""
+                              
                               $("#search_result").text("score--call");
                               nebPay.call(to,value,callsaveFunction,callsaveArgs,{
                                 listener:function(){
@@ -264,15 +265,7 @@
                                 }
                               })
 
-                              nebPay.call(to,value,callgetFunction,callgetArgs,{
-                                listener: function(resp){
-                                  $("#search_result").text("score--call--success--get");
-
-                                  $("#search_result").text("score--call--success--get--update");
-
-                                  $("#result").text(resp);
-                                }
-                              });
+                              
                                   //listener:score_push
                                  // document.write("save success");
                               //});
@@ -282,9 +275,26 @@
                               //alert("success");
                             }
 
+                            function getScore(){
+                              var to = dappaddress;
+                              var value = "0";
+                              var callgetFunction = "get";
+                              var callgetArgs = "";
+                              nebPay.call(to,value,callgetFunction,callgetArgs,{
+                                listener: function(resp){
+                                  $("#search_result").text("score--call--success--get");
+
+                                  $("#search_result").text("score--call--success--get--update");
+
+                                  $("#result").text(resp);
+                                }
+                              });
+                            }
+
                             toggleButton.addEventListener("click", toggleTimer);
                             resetButton.addEventListener("click", resetTimer);
                             savebutton.addEventListener("click",saveScore)
+                            getbutton.addEventListener("click",getScore)
                         </script>
 
             

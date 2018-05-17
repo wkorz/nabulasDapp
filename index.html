@@ -292,20 +292,21 @@
                                   $("#result").text("res:"+resp.toString());
                                 }
                               });
+			      */
 
                               nebPay.call(to,value,"getsize",callgetArgs,{
                                 listener:function(resp){
                                   $("#size").text("size:"+resp.toString());
                                 }
                               });
-				    */
-
+				    
+/*
                               nebPay.call(to,value,"gettest",callgetArgs,{
                                 listener:function(resp){
                                   $("#test").text("test:"+resp.toString());
                                 }
                               });
-
+*/
                             }
 
                             toggleButton.addEventListener("click", toggleTimer);

@@ -306,9 +306,8 @@
                                     tmp += String(part[0]).substring(6)+"\t"+String(part[1]).substring(12,17)+"\t"+String(part[2]).substring(13,48)+"\t"+String(part[3]).substring(11)+"\t"+String(part[4]).substring(1,12)+"\r\n";
 					  
 				  }
-			          re = /\r\n/;
-				  res = tmp.replace(re,"\n"); 
-                                  $("#test").text(res);
+			           
+                                  $("#test").text(tmp);
                                 }
                               });
 

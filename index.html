@@ -300,7 +300,7 @@
 */
                               nebPay.simulateCall(to,value,"foreach",callgetArgs,{
                                 listener:function(resp){
-                                  $("#test").text("test:"+resp.result.toString().split("_").split(",") + "<br/>");
+                                  $("#test").text("test:"+resp.result.toString().split("_") + "<br/>");
                                 }
                               });
 

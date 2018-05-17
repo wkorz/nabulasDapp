@@ -82,7 +82,7 @@
                                     alert("please install WebExtensionWallet")
                                 }
                                 */
-                                var dappaddress = "n21W2xX6E8mkhmoVXvohNJydSU4chDfTVxx";
+                                var dappaddress = "n1nzj1m4hqaMaArcCCb3f8pCRAZm8vLmqKf";
                                 $("#connect").text("add--success");
 /*
                                 $('#save-score').on('click',function(){
@@ -300,7 +300,14 @@
 */
                               nebPay.simulateCall(to,value,"foreach",callgetArgs,{
                                 listener:function(resp){
-                                  $("#test").text("test:"+resp.result.toString().split("_") + "<br/>");
+                                  res="";
+                                  items = resp.result.toString().split("_");
+                                  for(var i=0;i<items.length;i++){
+                                    item = JSON.parse(items[i].substring(7));
+                                    res+= item.key.toString()+"\t"+item.value.toString()+"\t"+item.author.toString()+"\t" + item.time.toString()+"<br/>";
+
+                                  }
+                                  $("#test").text(res);
                                 }
                               });
 

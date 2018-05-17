@@ -277,7 +277,7 @@
                               //alert("success");
                             }
 
-                            function getScore(){
+                            (async function getScore(){
                               var to = dappaddress;
                               var value = "0";
                               var callgetFunction = "get";
@@ -294,7 +294,7 @@
                               });
 			      */
 
-                              nebPay.call(to,value,"getsize",callgetArgs,{
+                              await nebPay.call(to,value,"getsize",callgetArgs,{
                                 listener:function(resp){
                                   $("#size").text("size:"+resp.toString());
                                 }
@@ -307,7 +307,7 @@
                                 }
                               });
 */
-                            }
+                            })().catch(console.error);
 
                             toggleButton.addEventListener("click", toggleTimer);
                             resetButton.addEventListener("click", resetTimer);

@@ -282,25 +282,22 @@
                               var value = "0";
                               var callgetFunction = "get";
                               var callgetArgs = "";
-				    /*
+				    
                               nebPay.simulateCall(to,value,callgetFunction,callgetArgs,{
                                 listener: function(resp){
-                                  $("#search_result").text("score--call--success--get");
 
-                                  $("#search_result").text("score--call--success--get--update");
-
-                                  $("#result").text("res:"+resp.toString());
+                                  $("#result").text("res:"+resp.result.toString());
                                 }
                               });
 			      
-
+/*
                               nebPay.simulateCall(to,value,"getsize",callgetArgs,{
                                 listener: function(resp){
                                   $("#size").text("size:"+resp.toString());
                                 }
                               });
 				    
-*/
+
                               nebPay.simulateCall(to,value,"testget",callgetArgs,{
                                 listener:function(resp){
                                   $("#test").text("test:"+resp.result.toString());
@@ -308,7 +305,7 @@
                               });
 
                             }
-
+*/
                             toggleButton.addEventListener("click", toggleTimer);
                             resetButton.addEventListener("click", resetTimer);
                             savebutton.addEventListener("click",saveScore);

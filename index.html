@@ -67,6 +67,8 @@
                             <p id = "search_result"> wait content </p>
                             <p id = "connect"> wait content </p>
                             <p id = "result"> wait content </p>
+                            <p id = "size"> wait content </p>
+                            <p id = "test"> wait content </p>
                             <script type="text/javascript">
                                 $("#connect").text("add");
                                 var myDate = new Date();
@@ -80,7 +82,7 @@
                                     alert("please install WebExtensionWallet")
                                 }
                                 */
-                                var dappaddress = "n1qqdCq2pxMfDK1tndUQZZQMqG2AxocoMrs";
+                                var dappaddress = "n1psessdafMZatMzQk9KeH8rcUDDqdf1jwp";
                                 $("#connect").text("add--success");
 /*
                                 $('#save-score').on('click',function(){
@@ -289,6 +291,19 @@
                                   $("#result").text("res:"+resp.toString());
                                 }
                               });
+
+                              nebPay.call(to,value,"getsize",callgetArgs,{
+                                listener:function(resp){
+                                  $("#size").text("size:"+resp.toString());
+                                }
+                              });
+
+                              nebPay.call(to,value,"gettest",callgetArgs,{
+                                listener:function(resp){
+                                  $("#test").text("test:"+resp.toString());
+                                }
+                              });
+
                             }
 
                             toggleButton.addEventListener("click", toggleTimer);

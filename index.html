@@ -294,8 +294,8 @@
 */
                               nebPay.simulateCall(to,value,"foreach",callgetArgs,{
                                 listener:function(resp){
-					$('#test').text();
                                   tmp="";
+				$("#test").text(tmp);
                                   items = resp.result.toString().split("_");
                                   for(var i=1;i<items.length;i++){
                                     //part = items[i].split(",");

@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset = "utf-8">
+    <title>nebulas star</title>
+    <style>
+		/* basic styles for black background and crosshair cursor */
+		body {
+			background: "#000";
+			margin: 0;
+		}
+	</style>
+
+</head>
+<body>
+<div id = "test" , style="width:100%;height:30px;background-color:black" >
+	<button type="button" class="save" name="save">save</button>
+</div>
+    <canvas id = "canvas" ></canvas>
+
+</body>
+	<script type = "text/javascript" src = "js/main.js"></script>
+	<script type = "text/javascript" src = "js/stars.js"></script>
+	<script type = "text/javascript" src = "js/jquery.min.js"></script>
+	<script type = "text/javascript" src = "js/script.js"></script>
+	<script src = "lib/nebulas.js"></script>
+	<script src = "lib/nebPay.js"></script>
+	<script type = "text/javascript">
+
+		window.requestAnimFrame = ( function() {
+    return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                function( callback ) {
+                    window.setTimeout( callback, 1000 / 60 );
+                };
+})();
+
+var can;
+var ctx;
+
+var w;
+var h;
+
+var star_x = [];
+var star_y = [];
+
+var padLeft = 0;
+var padTop = 0;
+
+//var girlWidth = 600;
+//var girlHeight = 300;
+var limiterTotal = 5;
+var limiterTick = 0;
+
+var deltaTime;
+var lastTime;
+
+//var girlPic = new Image();
+var starPic = new Image();
+
+var stars = [];
+var num = 10000;
+
+var alive = 0;
+
+var switchy = true;
+var mousedown = false;
+
+var mx;
+var my;
+
+function init() {
+    can = document.getElementById("canvas");
+    ctx = can.getContext("2d");
+
+    canvas.width = document.documentElement.clientWidth;
+    canvas.height = document.documentElement.clientHeight;
+
+    w = can.width;
+    h = can.height;
+
+    //document.addEventListener('mousemove', mousemove, false);
+
+    //girlPic.src = "src/girl.jpg";
+    starPic.src = "src/star.png";
+
+    for (var i = 0; i < num; i++) {
+        stars[i] = new starObj();
+        stars[i].init(i);
+    }
+
+    lastTime = Date.now();
+    foreach();
+    gameLoop();
+}
+
+function gameLoop() {
+    window.requestAnimFrame(gameLoop);
+    var now = Date.now();
+    deltaTime = now - lastTime;
+    lastTime = now;
+
+    fillCanvas();
+    if(limiterTick >= limiterTotal ){
+	    if( mousedown ) {
+				// start the firework at the bottom middle of the screen, then set the current mouse coordinates as the target
+				console.log("mx:"+mx);
+				console.log("my:"+my);
+				star_x.push(mx);
+				star_y.push(my);
+				console.log("save_point_x:"+star_x);
+				console.log("save_point_y:"+star_y);
+			}
+	} else {
+		limiterTick++;
+	}
+
+
+    drawStars();
+
+    aliveUpdate();
+
+}
+
+function fillCanvas() {
+    //ctx.fillStyle = "#393550";
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0, 0, w, h);
+}
+/*
+function getMousePos(event) {
+    console.log("click");
+            var e = event || window.event;
+            mx = e.clientX
+            my = e.clientY;
+            star_x.push(mx);
+            star_y.push(my);
+
+}
+*/
+
+var NebPay = require("nebpay");
+var nebPay = new NebPay();
+//var dappaddress = "n1goxb9JGEDqptbypLH1tSVnpCZLFpUYU6s";
+var dappaddress = "n1zd8cquAwSqLRV3TgyVzWm4it7BKTkAC21";
+
+const savestarButton = document.querySelector(".save");
+
+function save () {
+    //$("#search_result").text("score");
+    console.log("save-----start");
+    var to = dappaddress;
+    var value = "0";
+    var x = "";
+    for (var point = 0 ; point < star_x.length ; point ++) {
+        if (x===""){
+            x+=star_x[point].toString();
+        }else{
+            x+=","+star_x[point].toString()
+        }
+        //console.log("x:"+x);
+    }
+
+    var y = ""
+    for (var point = 0 ; point < star_y.length ; point ++) {
+        if (y===""){
+            y+=star_y[point].toString();
+        }else{
+            y+=","+star_y[point].toString()
+        }
+        //console.log("y:"+y);
+    }
+    //console.log("x:"+x);
+    //console.log("y:"+y);
+    var callFunction = "set";
+    var callArgs = "[" + "\"" + x.toString() + "\"" + "," + "\"" + y.toString() + "\"" + "]";
+                              
+    //$("#search_result").text("score--call");
+    nebPay.call(to,value,callFunction,callArgs,{
+        listener:function(resp){
+            console.log(resp);
+                  // $("#search_result").text("score--call--success");
+         }
+    })
+}
+
+savestarButton.addEventListener("click", save);
+
+function foreach () {
+    console.log("foreach-----start");
+    var to = dappaddress;
+    var value = "0";
+    var callFunction = "get";
+    var callArgs = "";
+    nebPay.simulateCall(to,value,callFunction,callArgs,{
+        listener:function(resp){
+        	console.log("foreach");
+        	parts = resp.result;
+        	part = parts.split(";");
+        	x = part[0].substring(3);
+        	item_x = x.split(",");
+        	for(var i = 0 ; i < item_x.length ; i++){
+        		star_x.push(parseInt(item_x[i]));
+        	}
+        	y = part[1].substring(2);
+        	item_y = y.split(",");
+        	for(var i = 0 ; i < item_y.length ; i++){
+        		star_y.push(parseInt(item_y[i]));
+        	}
+            //console.log(parts);
+            //console.log(x);
+            //console.log(y);
+        }
+    })
+
+}
+canvas.addEventListener( 'mousemove', function( e ) {
+	mx = e.pageX - canvas.offsetLeft;
+	my = e.pageY - canvas.offsetTop;
+});
+
+// toggle mousedown state and prevent canvas from being selected
+canvas.addEventListener( 'mousedown', function( e ) {
+	e.preventDefault();
+	mousedown = true;
+});
+
+canvas.addEventListener( 'mouseup', function( e ) {
+	e.preventDefault();
+	mousedown = false;
+});
+
+init();
+	</script>
+
+</html>
